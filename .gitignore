@@ -43,6 +43,11 @@
 # main files
 *-main.c
 
+# simple functions
+
+print_array.c
+print_list.c
+
 # test files
 test-*
 *-test
