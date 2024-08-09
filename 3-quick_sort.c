@@ -18,6 +18,7 @@ void swap_elements(int *first_element, int *second_element)
  * @array: The array to be partitioned
  * @start_index: The starting index of the segment to partition
  * @end_index: The ending index of the segment to partition
+ * @size: size to print
  *
  * Description: This function implements the Lomuto partition scheme for
  * the QuickSort algorithm. It selects the last element as the pivot and
@@ -28,7 +29,7 @@ void swap_elements(int *first_element, int *second_element)
  * Return: The index of the pivot after partitioning
  */
 
-int lomuto_partition(int array[], int start_index, int end_index)
+int lomuto_partition(int array[], int start_index, int end_index, size_t size)
 {
 	int pivot_value = array[end_index];
 	int pivot_position = start_index - 1;
@@ -41,10 +42,14 @@ int lomuto_partition(int array[], int start_index, int end_index)
 		{
 			pivot_position++;
 			swap_elements(&array[pivot_position], &array[current_index]);
+			print_array(array, size);
+
 		}
 	}
 	/** Place the pivot in its correct position */
 	swap_elements(&array[pivot_position + 1], &array[end_index]);
+	print_array(array, size);
+
 	return (pivot_position + 1);
 }
 
@@ -65,9 +70,8 @@ void quick_sort_recursive(int *array, int low, int high, size_t size)
 
 	if (low < high)
 	{
-		pivot_index = lomuto_partition(array, low, high);
+		pivot_index = lomuto_partition(array, low, high, size);
 
-		print_array(array, size);
 		quick_sort_recursive(array, low, pivot_index - 1, size);
 		quick_sort_recursive(array, pivot_index + 1, high, size);
 	}
