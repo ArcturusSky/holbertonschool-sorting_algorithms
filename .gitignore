@@ -52,6 +52,8 @@ print_list.c
 test-*
 *-test
 test_*
+print_list.c
+print_array.c
 
 # Debug files
 *.dSYM/
@@ -67,3 +69,4 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
